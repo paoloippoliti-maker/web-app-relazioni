@@ -1,0 +1,198 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relazioni Lab 1.6.1</title><style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#172b49;background:#f1f5fb}*{box-sizing:border-box}body{margin:0}header{background:#173f7d;color:white;padding:20px max(18px,calc((100vw - 1400px)/2))}h1{margin:0;font-size:1.55rem}header p{margin:5px 0 0;color:#e1ecff}.wrap{max-width:1400px;margin:auto;padding:16px}.panel{background:white;border:1px solid #d6e0ef;border-radius:14px;padding:17px;margin-bottom:14px;box-shadow:0 2px 9px #152b4a09}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.field{display:flex;flex-direction:column;gap:5px;min-width:145px;flex:1}.field.wide{min-width:220px}label{font-size:.9rem;font-weight:650}input,select,button{font:inherit;border:1px solid #b8c9de;border-radius:8px;padding:9px;min-height:41px}button{background:#e7efff;color:#17457e;cursor:pointer;font-weight:600}button:hover{background:#d7e6ff}button.primary{background:#2159a4;color:white}button.primary:hover{background:#174781}button:disabled{opacity:.5;cursor:not-allowed}.tabs{display:flex;gap:8px;margin-bottom:12px}.tabs button.active{background:#2159a4;color:white}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid .panel{margin:0;min-width:0}h2{font-size:1.13rem;margin:0 0 8px}.hint{font-size:.88rem;color:#536680;margin:4px 0 12px}.drawing{width:100%;height:auto;max-height:380px;touch-action:manipulation;display:block}.node{cursor:pointer}.node circle{fill:#e1edff;stroke:#2c65b8;stroke-width:2}.node text{font-weight:700;fill:#123c76;font-size:15px;pointer-events:none}.node.selected circle{fill:#ffe5a9;stroke:#d18c08;stroke-width:3}.edge{stroke:#2563eb;stroke-width:2.3;fill:none;pointer-events:none}.matrix-wrap{overflow:auto}.matrix{border-collapse:collapse;margin:auto}.matrix th,.matrix td{min-width:46px;height:43px;text-align:center;border:1px solid #c4d2e4}.matrix th{background:#edf3ff}.cell{width:100%;height:100%;min-height:42px;padding:0;border:0;border-radius:0;background:#fff;font-size:1.1rem}.cell.on{background:#b9d8ff;color:#0b3c81}.cell.correct{background:#b8efc5;color:#166534}.cell.wrong{background:#ffc4c4;color:#991b1b}.cell:disabled{opacity:1;color:#0b3c81;cursor:default}.axislabel{font-size:14px;fill:#274568}.point{fill:#2563eb;stroke:#fff;stroke-width:1.5}.dot-hit{cursor:pointer;fill:transparent}.result{padding:10px 12px;border-radius:9px;background:#edf3fc;margin-top:10px;font-size:.92rem}.result.ok{background:#e2f7e8;color:#166534}.result.bad{background:#fff1dd;color:#7c4508}.row-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.source-tag{font-size:.75rem;background:#dceafa;color:#174a88;border-radius:12px;padding:4px 9px}.locked{background:#f9fbff}.pairs{line-height:1.7;overflow-wrap:anywhere}.property-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px}.prop-option{display:flex;align-items:center;gap:9px;padding:10px;border:1px solid #cbd8ea;border-radius:9px;cursor:pointer;background:#fff}.prop-option input{min-height:unset;width:19px;height:19px;accent-color:#235ca4}.prop-option.correct{border-color:#16a34a;background:#e1f8e7;color:#166534}.prop-option.wrong{border-color:#dc2626;background:#ffe4e4;color:#991b1b}.prop-option.locked{cursor:default}.hidden{display:none!important}footer{font-size:.8rem;color:#66768b;text-align:center;padding:16px}@media(max-width:800px){.grid{grid-template-columns:1fr}header{padding:17px}.wrap{padding:10px}.panel{padding:13px}}
+.counterexamples{margin:8px 0 3px;padding:10px 13px;background:#fff6f4;border-left:3px solid #cf3434;border-radius:6px}.counterexamples b{display:block;margin-bottom:6px;font-size:.82rem;letter-spacing:.035em;color:#8c2424}.counterexamples .example{margin:8px 0;line-height:1.9;font-size:1.13rem;font-weight:500}.counterexamples .example.short{display:inline-flex;margin:8px 26px 8px 0}.counterexamples .examples-grid{display:flex;flex-wrap:wrap;gap:2px 14px}.rel-symbol{display:inline-flex;align-items:baseline;vertical-align:baseline;gap:.20em;white-space:nowrap;font-family:Georgia,serif;font-size:1.16em;font-style:normal}.r-mark{display:inline-block;position:relative;font-style:italic;min-width:.83em;text-align:center}.r-mark.no:after{content:"";position:absolute;left:50%;top:50%;width:1.22em;height:3px;background:currentColor;transform:translate(-50%,-50%) rotate(-53deg);transform-origin:center;border-radius:2px}.property-formula{margin-top:8px;font-size:1.12rem;line-height:1.9;color:#234d78}.quantifier{font-size:1.1em}.explain{margin-top:5px;color:#536680;font-size:.89rem}.inspect-controls{margin-top:12px;display:flex;gap:8px;align-items:center}.inspect-controls label{font-size:.88rem;font-weight:600}.inspect-controls select{margin-left:8px;padding:7px;border:1px solid #a9b8cc;border-radius:7px;background:white}.inspect-result{margin-top:10px;padding:9px;border-radius:7px;font-weight:650}.inspect-result.good{background:#ecfdf3;color:#166534}.inspect-result.bad{background:#fff1f2;color:#991b1b}.inspect-nav{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:10px;font-size:.8rem}.inspect-nav button{padding:7px}.cell.inspect-green{background:#bbf7d0!important;color:#166534!important}.cell.inspect-red{background:#fecaca!important;color:#991b1b!important}.cell.inspect-blue{background:#bfdbfe!important;color:#1d4ed8!important}.cell.inspect-missing{outline:3px dashed #dc2626;outline-offset:-4px;background:#fff1f2!important}.cell.inspect-diagonal{position:relative}.cell.inspect-diagonal:after{content:"";position:absolute;left:-20%;top:50%;width:140%;border-top:2px dashed #64748b;transform:rotate(45deg);pointer-events:none;opacity:.8}</style></head><body><header><h1>Relazioni Lab <small style="font-size:.65em;opacity:.8">1.6.1</small></h1><p>Grafo orientato · Tabella a doppia entrata · Diagramma cartesiano · Diagramma sagittale</p></header><main class="wrap"><div class="tabs"><button id="tabExplore" class="active">Esplora</button><button id="tabPractice">Esercitati</button></div><section class="panel"><div class="controls"><div class="field"><label for="kind">Elementi</label><select id="kind"><option value="numeric">Numeri</option><option value="letters">Lettere</option><option value="mixed">Numeri o lettere (casuale)</option></select></div><div class="field"><label for="count">Numero elementi</label><select id="count"><option>3</option><option selected>4</option><option>5</option><option>6</option></select></div><div class="field wide" id="sourceField"><label for="source">Rappresentazione assegnata</label><select id="source"><option value="random">Casuale tra le quattro</option><option value="graph">Grafo orientato</option><option value="matrix">Tabella a doppia entrata</option><option value="cartesian">Diagramma cartesiano</option><option value="sagittal">Diagramma sagittale</option></select></div><button class="primary" id="generate">Genera insieme</button><button id="clear">Svuota relazione</button></div><div id="setEditor" style="margin-top:12px"><label for="elements">Elementi dell'insieme A (separati da virgole)</label><div class="controls"><input id="elements" style="flex:1;min-width:220px" value="1, 2, 3, 4"><button id="apply">Applica elementi</button></div></div><p class="hint" id="instructions"></p></section><section class="panel" id="overview"><strong>Relazione R:</strong> <span id="pairs" class="pairs">∅</span><div class="hint" id="setInfo"></div></section><div class="grid" id="views"></div><section class="panel" id="properties"></section></main><footer>Relazioni Lab — funziona offline su computer, LIM e tablet</footer><script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);const types=[['graph','Grafo orientato'],['matrix','Tabella a doppia entrata'],['cartesian','Diagramma cartesiano'],['sagittal','Diagramma sagittale']];let inspections={graph:'verify',matrix:'verify',cartesian:'verify'},inspectionSteps={graph:0,matrix:0,cartesian:0};let mode='explore',els=['1','2','3','4'],relation=new Set(),source='graph',answers={},checked={},pending={},propSelections=new Set(),propChecked=false;const key=(i,j)=>i+','+j,has=(s,i,j)=>s.has(key(i,j));const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const uniq=a=>[...new Set(a)];const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};const randomSet=()=>{const n=+$('count').value;let t=$('kind').value;if(t==='mixed')t=Math.random()<.5?'numeric':'letters';let pool=t==='numeric'?Array.from({length:25},(_,i)=>String(i+1)):'ABCDEFGHILMNOPQRSTUVZ'.split('');els=shuffle(pool).slice(0,n).sort(t==='numeric'?(a,b)=>+a-+b:undefined);$('elements').value=els.join(', ')};
+const randomRelation=()=>{relation=new Set();for(let i=0;i<els.length;i++)for(let j=0;j<els.length;j++)if(Math.random()<.35)relation.add(key(i,j));if(!relation.size)relation.add(key(0,Math.min(1,els.length-1)))};
+function resetAnswers(){answers={};checked={};pending={};propSelections=new Set();propChecked=false;for(const [id] of types)answers[id]=new Set()}
+function start(){randomSet();resetAnswers();if(mode==='practice'){randomRelation();source=$('source').value==='random'?types[Math.floor(Math.random()*types.length)][0]:$('source').value}else relation=new Set();render()}
+function activeSet(id){return mode==='explore'?relation:id===source?relation:answers[id]}
+function editable(id){return mode==='explore'||id!==source}
+function toggle(id,i,j){if(!editable(id))return;let s=activeSet(id),k=key(i,j);if(s.has(k))s.delete(k);else s.add(k);if(mode==='practice'&&checked[id]){const hasWrong=[...s].some(x=>!relation.has(x));if(!hasWrong)delete checked[id]}render()}
+function status(id,i,j){if(mode!=='practice'||!checked[id]||id===source||!has(activeSet(id),i,j))return 'normal';return has(relation,i,j)?'correct':'wrong'}
+function edgeColor(id,i,j){return {normal:'#2563eb',correct:'#16a34a',wrong:'#dc2626'}[status(id,i,j)]}
+function arrowDefs(id){return ['normal','correct','wrong'].map(t=>{let color={normal:'#2563eb',correct:'#16a34a',wrong:'#dc2626'}[t];return `<marker id="graph-${id}-${t}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="${color}"/></marker>`}).join('')}
+function graphMarker(id,t){return `url(#graph-${id}-${t})`}
+function svgMarkers(id){return `<defs>${['normal','correct','wrong'].map(t=>{let c={normal:'#2563eb',correct:'#16a34a',wrong:'#dc2626'}[t];return `<marker id="arr-${id}-${t}" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto-start-reverse" viewBox="0 0 10 10"><path d="M0 0 L10 5 L0 10 Z" fill="${c}"/></marker>`}).join('')}</defs>`}
+function coords(n,cx=180,cy=165,r=112){return Array.from({length:n},(_,i)=>{let a=-Math.PI/2+2*Math.PI*i/n;return {x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}})}
+function markers(id){return `<defs><marker id="arr-${id}" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto-start-reverse" viewBox="0 0 10 10"><path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/></marker></defs>`}
+
+const inspectionOptions=[['verify','Verifica'],['reflexive','Riflessiva'],['irreflexive','Antiriflessiva'],['symmetric','Simmetrica'],['antisymmetric','Antisimmetrica'],['transitive','Transitiva']];
+function inspectionData(id){
+ const prop=inspections[id]||'verify',n=els.length,r=relation,green=new Set(),red=new Set(),missing=new Set(),blue=new Set(),cases=[];
+ const put=(set,i,j)=>set.add(key(i,j));
+ if(prop==='reflexive'||prop==='irreflexive')for(let i=0;i<n;i++){
+  if(prop==='reflexive'){if(has(r,i,i))put(green,i,i);else put(missing,i,i)}
+  else if(has(r,i,i))put(red,i,i);
+ }
+ if(prop==='symmetric')for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(has(r,i,j)){
+  if(has(r,j,i))put(green,i,j);else{put(red,i,j);put(missing,j,i)}
+ }
+ if(prop==='antisymmetric')for(let i=0;i<n;i++)for(let j=i+1;j<n;j++)if(has(r,i,j)&&has(r,j,i)){put(red,i,j);put(red,j,i)}
+ if(prop==='transitive'){
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(has(r,i,j))for(let k=0;k<n;k++)if(has(r,j,k))cases.push({i,j,k,ok:has(r,i,k)});
+  cases.sort((a,b)=>Number(a.ok)-Number(b.ok));if(cases.length){const c=cases[Math.min(inspectionSteps[id]||0,cases.length-1)];put(blue,c.i,c.j);put(blue,c.j,c.k);if(c.ok)put(green,c.i,c.k);else put(missing,c.i,c.k)}
+ }
+ return {prop,green,red,missing,blue,cases};
+}
+function inspectionColor(d,i,j){let k=key(i,j);return d.red.has(k)?'#dc2626':d.green.has(k)?'#16a34a':d.blue.has(k)?'#2563eb':'#2563eb'}
+function inspectionOverlayCartesian(d){
+ if(d.prop==='verify')return '';
+ const n=els.length,left=55,top=28,step=260/Math.max(1,n-1),bottom=top+(n-1)*step;
+ let out='';if(['reflexive','irreflexive','symmetric','antisymmetric'].includes(d.prop))out+=`<path d="M ${left} ${bottom} L ${left+(n-1)*step} ${top}" stroke="#64748b" stroke-width="2" stroke-dasharray="7 5" pointer-events="none"/><text x="177" y="17" text-anchor="middle" fill="#64748b" font-size="12">Diagonale principale</text>`;
+ for(let k of d.missing){let [i,j]=k.split(',').map(Number);out+=`<circle cx="${left+i*step}" cy="${bottom-j*step}" r="10" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="4 3" pointer-events="none"/>`}
+ return out;
+}
+function inspectionOverlayGraph(d,p){
+ if(d.prop==='verify')return '';
+ let out='';const cx=220,cy=195;
+ const draw=(i,j)=>{
+  const u=p[i],v=p[j];
+  if(i===j){const dx=u.x-cx,dy=u.y-cy,len=Math.hypot(dx,dy),ox=dx/len,oy=dy/len,r=25,lx=u.x+ox*29,ly=u.y+oy*29,ang=Math.atan2(-oy,-ox),delta=.48;
+   const x1=lx+r*Math.cos(ang+delta),y1=ly+r*Math.sin(ang+delta),x2=lx+r*Math.cos(ang-delta),y2=ly+r*Math.sin(ang-delta);
+   return `<path d="M ${x1} ${y1} A ${r} ${r} 0 1 1 ${x2} ${y2}" fill="none" stroke="#dc2626" stroke-width="2.8" stroke-dasharray="6 5" marker-end="url(#inspect-missing)" pointer-events="none"/>`;
+  }
+  const dx=v.x-u.x,dy=v.y-u.y,len=Math.hypot(dx,dy),ux=dx/len,uy=dy/len;
+  return `<path d="M ${u.x+ux*20} ${u.y+uy*20} L ${v.x-ux*20} ${v.y-uy*20}" fill="none" stroke="#dc2626" stroke-width="2.8" stroke-dasharray="6 5" marker-end="url(#inspect-missing)" pointer-events="none"/>`;
+ };
+ out+='<defs><marker id="inspect-missing" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#dc2626"/></marker></defs>';
+ for(const k of d.missing){const [i,j]=k.split(',').map(Number);out+=draw(i,j)}
+ return out;
+}
+function inspectionPanel(id){if(mode!=='explore'||id==='sagittal')return '';
+ let d=inspectionData(id),opts=inspectionOptions.map(([v,t])=>`<option value="${v}" ${d.prop===v?'selected':''}>${t}</option>`).join('');
+ let title=`<div class="inspect-controls"><label>Visualizza proprietà <select data-inspection="${id}">${opts}</select></label></div>`;
+ if(d.prop==='verify')return title;
+ const flags=evaluateProperties().flags,ok=flags[d.prop];
+ let info=ok?`<div class="inspect-result good">✓ La relazione è ${d.prop==='reflexive'?'riflessiva':d.prop==='irreflexive'?'antiriflessiva':d.prop==='symmetric'?'simmetrica':d.prop==='antisymmetric'?'antisimmetrica':'transitiva'}.</div>`:`<div class="inspect-result bad">✕ La relazione non è ${d.prop==='reflexive'?'riflessiva':d.prop==='irreflexive'?'antiriflessiva':d.prop==='symmetric'?'simmetrica':d.prop==='antisymmetric'?'antisimmetrica':'transitiva'}.</div>`;
+ if(d.prop==='transitive'){
+  let idx=Math.min(inspectionSteps[id]||0,d.cases.length-1),c=d.cases[idx];
+  if(d.cases.length){
+   const a=esc(els[c.i]),b=esc(els[c.j]),z=esc(els[c.k]);
+   const same=c.i===c.j&&c.j===c.k;
+   const explanation=same?`Il cappio su ${a} soddisfa la condizione di transitività: ${a} è in relazione con sé stesso.`:`${a} è in relazione con ${b} e ${b} è in relazione con ${z}, ${c.ok?'ed è presente anche':'ma manca'} la relazione tra ${a} e ${z}.`;
+   const broken=d.cases.filter(x=>!x.ok).length;
+   const groupIndex=d.cases.slice(0,idx+1).filter(x=>x.ok===c.ok).length;
+   const groupTotal=d.cases.filter(x=>x.ok===c.ok).length;
+   info+=`<div class="inspect-nav"><button data-step="${id}" data-dir="-1" ${idx===0?'disabled':''}>◀ Precedente</button><span>${c.ok?'Caso corretto':'CONTROESEMPIO'} ${groupIndex} di ${groupTotal} · Caso ${idx+1} di ${d.cases.length}</span><button data-step="${id}" data-dir="1" ${idx===d.cases.length-1?'disabled':''}>Successivo ▶</button></div><p class="hint"><strong>${c.ok?'Condizione rispettata':'CONTROESEMPIO'}</strong> — ${explanation}</p>`;
+  }else info+='<p class="hint">Non ci sono concatenazioni di due relazioni: la transitività è soddisfatta.</p>';
+ }else if(d.prop==='symmetric')info+='<p class="hint">Verde: coppie speculari presenti. Rosso: punto senza il suo speculare. Rosso tratteggiato: punto mancante.</p>';
+ else if(d.prop==='antisymmetric')info+='<p class="hint">Rosso: coppie reciproche tra elementi distinti. La diagonale principale non costituisce violazione.</p>';
+ else info+=`<p class="hint">${d.prop==='reflexive'?'Verde: elementi in relazione con sé stessi. Rosso tratteggiato: elementi mancanti.':'Rosso: elementi in relazione con sé stessi (controesempi).'}</p>`;
+ return title+info;
+}
+
+function svgGraph(id){
+ const n=els.length,s=activeSet(id),cx=220,cy=195;
+ const p=n===4?[{x:115,y:105},{x:325,y:105},{x:115,y:285},{x:325,y:285}]:Array.from({length:n},(_,i)=>{let angle=-Math.PI/2+2*Math.PI*i/n;return {x:cx+115*Math.cos(angle),y:cy+115*Math.sin(angle)}});
+ const red='#e63946',inspect=mode==='explore'?inspectionData(id):null;
+ let out=`<svg class="drawing" viewBox="0 0 440 390" role="img" aria-label="Grafo orientato"><defs>${arrowDefs(id)}</defs>`;
+ // Un solo segmento per coppie reciproche, con due punte.
+ for(let i=0;i<n;i++)for(let j=i+1;j<n;j++){
+  const forward=has(s,i,j),backward=has(s,j,i);if(!forward&&!backward)continue;
+  const u=p[i],v=p[j],dx=v.x-u.x,dy=v.y-u.y,len=Math.hypot(dx,dy),ux=dx/len,uy=dy/len;
+  // Le estremità si fermano prima del punto nero; le punte non invadono il nodo.
+  const gap=20;
+  const stForward=status(id,i,j),stBackward=status(id,j,i);
+  const graphInspectState=inspect?(inspect.red.has(key(i,j))||inspect.red.has(key(j,i))?'wrong':inspect.green.has(key(i,j))||inspect.green.has(key(j,i))?'correct':'normal'):null;
+  const st=forward&&backward?(stForward==='wrong'||stBackward==='wrong'?'wrong':stForward==='correct'&&stBackward==='correct'?'correct':'normal'):(forward?stForward:stBackward);
+  const visualState=graphInspectState||st;
+  out+=`<path d="M ${(u.x+ux*gap).toFixed(2)} ${(u.y+uy*gap).toFixed(2)} L ${(v.x-ux*gap).toFixed(2)} ${(v.y-uy*gap).toFixed(2)}" fill="none" stroke="${{normal:'#2563eb',correct:'#16a34a',wrong:'#dc2626'}[visualState]}" stroke-width="2.5" ${backward?`marker-start="${graphMarker(id,visualState)}"`:''} ${forward?`marker-end="${graphMarker(id,visualState)}"`:''}/>`;
+ }
+ // Cappi circolari esterni: il nome è dentro il cerchio, il percorso è orario.
+ for(let i=0;i<n;i++)if(has(s,i,i)){
+  const q=p[i],dx=q.x-cx,dy=q.y-cy,d=Math.hypot(dx,dy);
+  const ox=dx/d,oy=dy/d,r=25,dist=29,lx=q.x+ox*dist,ly=q.y+oy*dist;
+  const inward=Math.atan2(-oy,-ox),delta=.48;
+  // Partenza dal lato orario successivo e arrivo sul lato precedente: arco maggiore orario.
+  const start=inward+delta,end=inward-delta;
+  const x1=lx+r*Math.cos(start),y1=ly+r*Math.sin(start),x2=lx+r*Math.cos(end),y2=ly+r*Math.sin(end);
+  const loopState=inspect?(inspect.red.has(key(i,i))?'wrong':inspect.green.has(key(i,i))?'correct':'normal'):status(id,i,i);
+  out+=`<path d="M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 1 1 ${x2.toFixed(2)} ${y2.toFixed(2)}" fill="none" stroke="${{normal:'#2563eb',correct:'#16a34a',wrong:'#dc2626'}[loopState]}" stroke-width="2.5" stroke-linecap="round" marker-end="${graphMarker(id,loopState)}"/>`;
+ }
+ for(let i=0;i<n;i++){
+  const q=p[i],dx=q.x-cx,dy=q.y-cy,d=Math.hypot(dx,dy),ox=dx/d,oy=dy/d;
+  const selected=pending[id]===i,tx=q.x+ox*29,ty=q.y+oy*29;
+  out+=`<g class="graph-node" data-node="${i}" data-view="${id}" style="cursor:pointer"><circle cx="${q.x}" cy="${q.y}" r="19" fill="transparent"/><circle cx="${q.x}" cy="${q.y}" r="${selected?6:4.5}" fill="${selected?'#e3a21b':'#111827'}" pointer-events="none"/><text x="${tx.toFixed(2)}" y="${(ty+6).toFixed(2)}" text-anchor="middle" font-family="Georgia,serif" font-size="19" font-style="italic" fill="#111827" pointer-events="none">${esc(els[i])}</text></g>`;
+ }
+ if(mode==='explore')out+=inspectionOverlayGraph(inspectionData(id),p);
+ return out+'</svg>';
+}
+function svgSagittal(id){
+ const n=els.length,s=activeSet(id),ys=Array.from({length:n},(_,i)=>48+i*(235/Math.max(1,n-1)));
+ let out=`<svg class="drawing" viewBox="0 0 420 340" role="img" aria-label="Diagramma sagittale">${svgMarkers(id)}<ellipse cx="86" cy="165" rx="70" ry="151" fill="#edf4ff" stroke="#8aaddc" stroke-width="1.5"/><ellipse cx="334" cy="165" rx="70" ry="151" fill="#f0fff5" stroke="#8bc9a4" stroke-width="1.5"/><text x="86" y="27" text-anchor="middle" font-weight="700" fill="#17457e">A</text><text x="334" y="27" text-anchor="middle" font-weight="700" fill="#177045">A</text>`;
+ // Distribuisce i punti di attacco sui bordi dei cerchi in base alle relazioni presenti.
+ const outgoing=Array.from({length:n},()=>[]),incoming=Array.from({length:n},()=>[]);
+ for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(has(s,i,j)){outgoing[i].push(j);incoming[j].push(i)}
+ for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(has(s,i,j)){
+  const oi=outgoing[i].indexOf(j),ij=incoming[j].indexOf(i);
+  const spread=(idx,total)=>total<=1?0:(idx-(total-1)/2)*Math.min(10,30/(total-1));
+  const offA=spread(oi,outgoing[i].length),offB=spread(ij,incoming[j].length);
+  const xa=86+Math.sqrt(Math.max(0,20*20-offA*offA))+3,xb=334-Math.sqrt(Math.max(0,20*20-offB*offB))-3;
+  const ya=ys[i]+offA,yb=ys[j]+offB,dy=yb-ya;
+  const st=status(id,i,j),color={normal:'#2563eb',correct:'#16a34a',wrong:'#dc2626'}[st];
+  out+=`<path d="M ${xa.toFixed(2)} ${ya.toFixed(2)} Q 210 ${((ya+yb)/2+Math.sign(dy)*Math.min(18,Math.abs(dy)*.08)).toFixed(2)} ${xb.toFixed(2)} ${yb.toFixed(2)}" fill="none" stroke="${color}" stroke-width="2.3" marker-end="url(#arr-${id}-${st})"/>`;
+ }
+ for(let i=0;i<n;i++)for(let side of [0,1]){let x=side?334:86;out+=`<g class="node ${pending[id]?.side===side&&pending[id]?.index===i?'selected':''}" data-side="${side}" data-node="${i}" data-view="${id}"><circle cx="${x}" cy="${ys[i]}" r="20"/><text x="${x}" y="${ys[i]+5}" text-anchor="middle">${esc(els[i])}</text></g>`}return out+'</svg>'
+}
+function svgCartesian(id){const n=els.length,s=activeSet(id),left=55,top=28,step=260/Math.max(1,n-1),bottom=top+(n-1)*step;let out=`<svg class="drawing" viewBox="0 0 365 350" role="img" aria-label="Diagramma cartesiano"><rect x="0" y="0" width="365" height="350" fill="white"/>`;for(let i=0;i<n;i++){let x=left+i*step,y=bottom-i*step;out+=`<line x1="${x}" y1="${top}" x2="${x}" y2="${bottom}" stroke="#d7e1ed"/><line x1="${left}" y1="${y}" x2="${left+(n-1)*step}" y2="${y}" stroke="#d7e1ed"/><text class="axislabel" x="${x}" y="${bottom+24}" text-anchor="middle">${esc(els[i])}</text><text class="axislabel" x="${left-16}" y="${y+5}" text-anchor="middle">${esc(els[i])}</text>`}out+=`<path d="M ${left-15} ${bottom} H ${left+(n-1)*step+18} M ${left} ${bottom+10} V ${top-16}" stroke="#385b8c" stroke-width="2" fill="none"/><text x="${left+(n-1)*step+24}" y="${bottom+5}" class="axislabel">x</text><text x="${left-5}" y="${top-20}" class="axislabel">y</text>`;for(let i=0;i<n;i++)for(let j=0;j<n;j++){let x=left+i*step,y=bottom-j*step;if(has(s,i,j)){let st=status(id,i,j),fill=mode==='explore'?inspectionColor(inspectionData(id),i,j):{normal:'#2563eb',correct:'#16a34a',wrong:'#dc2626'}[st];out+=`<circle cx="${x}" cy="${y}" r="7" fill="${fill}" stroke="white" stroke-width="1.5"/>`};out+=`<circle class="dot-hit" data-view="${id}" data-i="${i}" data-j="${j}" cx="${x}" cy="${y}" r="${Math.min(22,step*.4)}"/>`}if(mode==='explore')out+=inspectionOverlayCartesian(inspectionData(id));return out+'</svg>'}
+function matrix(id){let s=activeSet(id),html='<div class="matrix-wrap"><table class="matrix"><thead><tr><th>R</th>'+els.map(x=>`<th>${esc(x)}</th>`).join('')+'</tr></thead><tbody>';for(let i=0;i<els.length;i++){html+=`<tr><th>${esc(els[i])}</th>`;for(let j=0;j<els.length;j++){let d=mode==='explore'?inspectionData(id):null;let highlight=d?(d.red.has(key(i,j))?'inspect-red':d.green.has(key(i,j))?'inspect-green':d.blue.has(key(i,j))?'inspect-blue':d.missing.has(key(i,j))?'inspect-missing':''):'';if(d&&['symmetric','antisymmetric'].includes(d.prop)&&i===j)highlight+=' inspect-diagonal';html+=`<td><button class="cell ${highlight} ${has(s,i,j)?(status(id,i,j)==='correct'?'correct':status(id,i,j)==='wrong'?'wrong':'on'):''}" data-view="${id}" data-i="${i}" data-j="${j}" ${editable(id)?'':'disabled'} aria-label="${esc(els[i])} in relazione con ${esc(els[j])}" aria-pressed="${has(s,i,j)}">${has(s,i,j)?'✓':''}</button></td>`;}html+='</tr>'}return html+'</tbody></table></div>'}
+function feedback(id){if(!checked[id])return '';let missing=[...relation].filter(k=>!answers[id].has(k)),extra=[...answers[id]].filter(k=>!relation.has(k));if(!missing.length&&!extra.length)return '<div class="result ok">✓ Corretto! La rappresentazione coincide con quella assegnata.</div>';return `<div class="result bad">Da correggere: ${extra.length} coppie inserite in più e ${missing.length} coppie mancanti. Riprova senza visualizzare la soluzione.</div>`}
+const propNames=[['reflexive','Riflessiva'],['irreflexive','Antiriflessiva'],['symmetric','Simmetrica'],['antisymmetric','Antisimmetrica'],['transitive','Transitiva'],['none','Nessuna delle precedenti proprietà']];
+function relNotation(i,j,present=true){return `<span class="rel-symbol"><span>${esc(els[i])}</span><span class="r-mark ${present?'':'no'}">R</span><span>${esc(els[j])}</span></span>`}
+function evaluateProperties(){
+ const n=els.length,r=relation;
+ const examples={reflexive:[],irreflexive:[],symmetric:[],antisymmetric:[],transitive:[]};
+ for(let i=0;i<n;i++){
+  if(!has(r,i,i))examples.reflexive.push(relNotation(i,i,false));
+  if(has(r,i,i))examples.irreflexive.push(relNotation(i,i,true));
+ }
+ for(let i=0;i<n;i++)for(let j=0;j<n;j++){
+  if(has(r,i,j)&&!has(r,j,i))examples.symmetric.push(`${relNotation(i,j)} e ${relNotation(j,i,false)}`);
+  if(i<j&&has(r,i,j)&&has(r,j,i))examples.antisymmetric.push(`${relNotation(i,j)} e ${relNotation(j,i)}`);
+  if(has(r,i,j))for(let k=0;k<n;k++)if(has(r,j,k)&&!has(r,i,k))examples.transitive.push(`${relNotation(i,j)} e ${relNotation(j,k)}, ma ${relNotation(i,k,false)}`);
+ }
+ const flags={reflexive:!examples.reflexive.length,irreflexive:!examples.irreflexive.length,symmetric:!examples.symmetric.length,antisymmetric:!examples.antisymmetric.length,transitive:!examples.transitive.length};
+ flags.none=!Object.values(flags).some(Boolean);
+ const why={reflexive:'Ogni elemento è in relazione con se stesso.',irreflexive:'Nessun elemento è in relazione con se stesso.',symmetric:'Ogni relazione presente ha anche la relazione inversa.',antisymmetric:'Non esistono elementi distinti in relazione reciproca.',transitive:'Ogni concatenazione di due relazioni è completata dalla terza.',none:flags.none?'Nessuna delle cinque proprietà è soddisfatta.':'Almeno una delle cinque proprietà è soddisfatta.'};
+ return {flags,why,examples};
+}
+function propertyFormula(id){
+ const q='<span class="quantifier">∀</span>',A='<em>A</em>',r=(a,b,yes=true)=>`<span class="rel-symbol"><span>${a}</span><span class="r-mark ${yes?'':'no'}">R</span><span>${b}</span></span>`;
+ const prefix=(vars)=>`${q} ${vars} ∈ ${A}, &nbsp;`;
+ const f={
+  reflexive:prefix('a')+r('a','a'),
+  irreflexive:prefix('a')+r('a','a',false),
+  symmetric:prefix('a, b')+r('a','b')+' ⇒ '+r('b','a'),
+  antisymmetric:prefix('a, b')+r('a','b')+' e '+r('b','a')+' ⇒ a = b',
+  transitive:prefix('a, b, c')+r('a','b')+' e '+r('b','c')+' ⇒ '+r('a','c'),
+  none:'Nessuna delle cinque proprietà è soddisfatta.'
+ };
+ return `<div class="property-formula">${f[id]}</div>`;
+}
+function propertyExplanation(id,result){
+ if(result.flags[id])return propertyFormula(id);
+ if(id==='none')return '<div class="explain">Almeno una delle cinque proprietà è soddisfatta.</div>';
+ const items=result.examples[id];
+ return `<div class="counterexamples"><b>${items.length===1?'CONTROESEMPIO':'CONTROESEMPI'}</b>${`<div class="examples-grid">${items.map(x=>`<div class="example ${['reflexive','irreflexive'].includes(id)?'short':''}">${x}</div>`).join('')}</div>`}</div>`;
+}
+function propertyFeedback(){
+ if(!propChecked)return '';
+ const {flags}=evaluateProperties();const extra=[...propSelections].filter(x=>!flags[x]).length;const correctAnswers=flags.none?['none']:propNames.slice(0,5).map(([id])=>id).filter(id=>flags[id]);const missing=correctAnswers.filter(id=>!propSelections.has(id)).length;
+ return !extra&&!missing?'<div class="result ok">✓ Corretto! Hai individuato la risposta esatta.</div>':`<div class="result bad">Da correggere: ${extra} selezioni in più e ${missing} risposte corrette mancanti. Le risposte mancanti non vengono rivelate.</div>`;
+}
+function renderProperties(){
+ const practice=mode==='practice',result=evaluateProperties();
+ const controls=propNames.map(([id,name])=>{
+  const selected=propSelections.has(id),state=practice&&propChecked&&selected?(result.flags[id]?'correct':'wrong'):'';
+  return `<label class="prop-option ${state}"><input type="checkbox" data-prop="${id}" ${selected?'checked':''}><span>${name}</span></label>`;
+ }).join('');
+ $('properties').innerHTML=practice?`<h2>Proprietà della relazione</h2><p class="hint">Seleziona tutte le proprietà soddisfatte dalla relazione assegnata. «Nessuna» è alternativa alle altre cinque.</p><div class="property-options">${controls}</div><div class="row-actions"><button class="primary" id="checkProps">Controlla proprietà</button><button id="resetProps">Cancella selezioni</button></div>${propertyFeedback()}`:
+ `<h2>Proprietà della relazione</h2><p class="hint">Analizza la relazione costruita e verifica le cinque proprietà.</p><button class="primary" id="checkProps">${propChecked?'Aggiorna verifica':'Verifica proprietà'}</button>${propChecked?'<div style="margin-top:12px">'+propNames.map(([id,name])=>`<div style="padding:8px 0;border-bottom:1px solid #e2e8f0"><strong style="color:${result.flags[id]?'#166534':'#991b1b'}">${result.flags[id]?'✓':'✕'} ${name}</strong><div class="hint">${propertyExplanation(id,result)}</div></div>`).join('')+'</div>':''}`;
+}
+function render(){let practice=mode==='practice';$('tabExplore').classList.toggle('active',!practice);$('tabPractice').classList.toggle('active',practice);$('sourceField').classList.toggle('hidden',!practice);$('setEditor').classList.toggle('hidden',practice);$('clear').classList.toggle('hidden',practice);$('generate').textContent=practice?'Nuovo esercizio':'Genera insieme casuale';$('overview').classList.toggle('hidden',practice);$('instructions').textContent=practice?'Osserva la rappresentazione assegnata, completa le altre tre e premi Controlla su ciascuna. Le risposte non si sincronizzano. Controlla: verde = giusta, rosso = in più; le mancanti non sono mostrate.':'Clicca sulle caselle o sui punti; nei diagrammi con frecce clicca prima la partenza e poi l’arrivo. Tutte le rappresentazioni si aggiornano insieme.';if(!practice){$('pairs').textContent=relation.size?'{ '+[...relation].sort((a,b)=>{let [i,j]=a.split(',').map(Number),[u,v]=b.split(',').map(Number);return i-u||j-v}).map(k=>{let [i,j]=k.split(',').map(Number);return '('+els[i]+', '+els[j]+')'}).join(', ')+' }':'∅';let dom=uniq([...relation].map(k=>els[+k.split(',')[0]])),img=uniq([...relation].map(k=>els[+k.split(',')[1]]));$('setInfo').textContent='A = { '+els.join(', ')+' }  ·  Dominio: { '+dom.join(', ')+' }  ·  Immagine: { '+img.join(', ')+' }'}$('views').innerHTML=types.map(([id,title])=>{let fixed=practice&&id===source;let drawing=id==='graph'?svgGraph(id):id==='matrix'?matrix(id):id==='cartesian'?svgCartesian(id):svgSagittal(id);return `<section class="panel ${fixed?'locked':''}"><h2>${title} ${fixed?'<span class="source-tag">ASSEGNATO</span>':''}</h2><p class="hint">${fixed?'Leggi la relazione: questa rappresentazione non è modificabile.':id==='graph'?'Clicca due nodi per aggiungere o togliere un arco; lo stesso nodo crea un cappio.':id==='sagittal'?'Clicca prima un elemento a sinistra e poi uno a destra.':id==='matrix'?'Clicca le caselle per selezionare le coppie.':'Clicca i punti della griglia per selezionare le coppie.'}</p>${drawing}${!practice?inspectionPanel(id):''}${practice&&!fixed?`<div class="row-actions"><button class="primary" data-check="${id}">Controlla</button><button data-reset="${id}">Cancella risposta</button></div>${feedback(id)}`:''}</section>`}).join('');renderProperties()}
+$('views').addEventListener('change',e=>{let sel=e.target.closest('[data-inspection]');if(sel){inspections[sel.dataset.inspection]=sel.value;inspectionSteps[sel.dataset.inspection]=0;render()}});$('views').addEventListener('click',e=>{let step=e.target.closest('[data-step]');if(step){let id=step.dataset.step;inspectionSteps[id]=Math.max(0,(inspectionSteps[id]||0)+Number(step.dataset.dir));render();return}let check=e.target.closest('[data-check]');if(check){checked[check.dataset.check]=true;render();return}let reset=e.target.closest('[data-reset]');if(reset){let id=reset.dataset.reset;answers[id]=new Set();delete checked[id];delete pending[id];render();return}let cell=e.target.closest('[data-i][data-j]');if(cell){toggle(cell.dataset.view,+cell.dataset.i,+cell.dataset.j);return}let node=e.target.closest('[data-node]');if(!node)return;let id=node.dataset.view;if(!editable(id))return;let index=+node.dataset.node;if(id==='graph'){if(pending[id]===undefined)pending[id]=index;else{let from=pending[id];delete pending[id];toggle(id,from,index);return}}else if(id==='sagittal'){let side=+node.dataset.side;if(side===0)pending[id]={side,index};else if(pending[id]?.side===0){let from=pending[id].index;delete pending[id];toggle(id,from,index);return}}render()});
+$('properties').addEventListener('click',e=>{if(e.target.id==='checkProps'){propChecked=true;renderProperties()}else if(e.target.id==='resetProps'){propSelections.clear();propChecked=false;renderProperties()}});$('properties').addEventListener('change',e=>{const id=e.target.dataset.prop;if(!id)return;if(e.target.checked){if(id==='none')propSelections.clear();else propSelections.delete('none');propSelections.add(id)}else propSelections.delete(id);if(propChecked){const {flags}=evaluateProperties();if(![...propSelections].some(x=>!flags[x]))propChecked=false}renderProperties()});
+$('tabExplore').onclick=()=>{mode='explore';relation=new Set();resetAnswers();render()};$('tabPractice').onclick=()=>{mode='practice';start()};$('generate').onclick=start;$('clear').onclick=()=>{relation.clear();pending={};propChecked=false;propSelections.clear();render()};$('apply').onclick=()=>{let a=$('elements').value.split(',').map(x=>x.trim()).filter(Boolean);if(a.length<2||a.length>10||uniq(a).length!==a.length){alert('Inserisci da 2 a 10 elementi distinti, separati da virgole.');return}els=a;if(a.length>=3&&a.length<=6)$('count').value=String(a.length);relation.clear();resetAnswers();render()};$('source').onchange=()=>{if(mode==='practice')start()};$('count').onchange=()=>{if(mode==='practice')start()};$('kind').onchange=()=>{if(mode==='practice')start()};render();
+})();
+</script></body></html>
